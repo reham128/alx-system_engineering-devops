@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#Bash script that displays the content of the file /etc/passwd.
+#script should only display: username, user id, Home directory path for the user
+#using while loop
+#Format: The user USERNAME is part of the GROUP_ID gang, lives in HOME_DIRECTORY and rides COMMAND/SHELL. 
+#USER ID's place is protected by the passcode PASSWORD, more info about the user here: USER ID INFO
+
+f="/etc/passwd"
+
+while IFS=':' read -r usrname passwod u_id gid info home_dir shel
+do
+	echo "The user $usrname is part of the $gid gang,"\
+	"lives in $home_dir and rides $shel."\
+        "$u_id's  place is protected by the passcode $passwod,"\
+        "more info about the user here: $info"    
+done < "$f"
