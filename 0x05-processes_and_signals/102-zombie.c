@@ -26,7 +26,7 @@ int main(void)
 	{
 		zmb = fork();
 		if (!zmb)
-			break;
+			return (0);
 		printf("Zombie process created, PID: %d\n", zmb);
 	}
 	infinite_while();
