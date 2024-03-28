@@ -3,9 +3,16 @@
 
 sudo apt-get -y update
 sudo apt-get install -y nginx
-sudo service nginx start
 sudo ufw allow 'Nginx HTTP'
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-echo "Hello World!" > /usr/share/nginx/html/index.html
+service nginx start
+echo "<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+</body>
+</html>" | sudo tee /var/www/html/index.htmlufw allow 'Nginx HTTP'
+
 sudo service nginx restart
