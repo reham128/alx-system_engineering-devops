@@ -3,4 +3,20 @@
 #Configure HAproxy so that it send traffic to web-01 and web-02
 #Distribute requests using a roundrobin algorithm
 #configured with hostnames: [STUDENT_ID]-web-01 and [STUDENT_ID]-web-02
+sudo apt-get -y update
+sudo apt-get -y install nginx
+cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
+frontend main
+    bind *:80
+    default_backend servers
 
+backend servers
+    balance roundrobin
+    server 527036-web-01 54.159.25.156:80 check
+    server 527036-web-01 100.26.142.107:80 check
+EOF
+if [ "$(pgrep -c nginx)" -le 0 ]; then
+	sudo service nginx start
+else
+	sudo service nginx restart
+fi
