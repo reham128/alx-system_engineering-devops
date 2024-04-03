@@ -4,7 +4,7 @@
 #Distribute requests using a roundrobin algorithm
 #configured with hostnames: [STUDENT_ID]-web-01 and [STUDENT_ID]-web-02
 sudo apt-get -y update
-sudo apt-get -y install nginx
+sudo apt-get -y install haproxy
 server_config=\
 "
 frontend main
@@ -18,9 +18,10 @@ backend servers
 "
 echo "$server_config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
 echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
-if [ "$(pgrep -c nginx)" -le 0 ]; then
-	sudo service nginx start
+echo "configured - Roundrobin On web-01 & web-02"
+if [ "$(pgrep -c haproxy)" -le 0 ]; then
+	sudo service haproxy start
 else
-	sudo service nginx restart
+	sudo service haproxy restart
 fi
 sudo update-rc.d haproxy enable
