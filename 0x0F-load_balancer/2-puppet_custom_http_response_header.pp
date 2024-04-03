@@ -4,21 +4,22 @@ exec { 'update':
         command => '/usr/bin/apt-get update',
 }
 
+package { 'nginx':
+        ensure => 'installed',
+        require => Exec['update']
+}
+
 file {'/var/www/html/index.html':
 	content => 'Hello World!'
 }
 
-package { 'nginx':
-	ensure => 'installed',
-	require => Exec['update']
-}
 
 service { 'nginx':
 	ensure => running,
 	require => Package['nginx']
 }
 
-exe { 'redirect_me':
+exec { 'redirect_me':
 	command => 'sed -i "24i\	rewrite ^/redirect_me https://th3-gr00t.tk/ permanent;" /etc/nginx/sites-available/default',
 	provider => 'shell'
 }
