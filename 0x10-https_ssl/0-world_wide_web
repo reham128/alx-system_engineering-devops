@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Function to query DNS and display information
 display_info() {
 	local subdomain=$1
