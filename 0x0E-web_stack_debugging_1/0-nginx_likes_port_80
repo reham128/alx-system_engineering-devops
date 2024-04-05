@@ -8,3 +8,4 @@ if ! netstat -tuln | grep ':80'; then
 	exit 1
 fi
 echo "Nginx is now listening on port 80"
+
