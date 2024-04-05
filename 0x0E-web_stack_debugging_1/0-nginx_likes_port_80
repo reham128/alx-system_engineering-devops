@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#Nginx must be running, and listening on port 80 of all the
+#server’s active IPv4 IPs
+
+# Restart Nginx
+service nginx restart
+
+# Check if Nginx is listening on port 80
+if ! netstat -tuln | grep ':80'; then
+	echo "Nginx is not listening on port 80"
+	exit 1
+fi
+echo "Nginx is now listening on port 80"
