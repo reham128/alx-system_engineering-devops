@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 #Nginx must running,listening on port 80 of all server’s active IPv4 IPs
-
 echo "server { listen 80; }" | sudo tee /etc/nginx/sites-available/default > /dev/null
-
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
-# Check if Nginx is listening on port 80
-if ! netstat -tuln | grep ':80'; then
-	echo "Nginx is not listening on port 80"
-	exit 1
-fi
-echo "Nginx is now listening on port 80"
 
