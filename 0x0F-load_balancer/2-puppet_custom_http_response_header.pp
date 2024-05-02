@@ -1,12 +1,12 @@
 #automate the task of creating a custom HTTP header response, but with Puppet
 
-exec { 'update':
+exec { 'update system':
         command => '/usr/bin/apt-get update',
 }
 
 package { 'nginx':
         ensure => 'installed',
-        require => Exec['update']
+        require => Exec['update system']
 }
 
 file {'/var/www/html/index.html':

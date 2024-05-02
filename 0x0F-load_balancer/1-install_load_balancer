@@ -13,8 +13,8 @@ frontend main
 
 backend servers
     balance roundrobin
-    server 527036-web-01 54.159.25.156:80 check
-    server 527036-web-01 100.26.142.107:80 check
+    server 527036-web-01 54.196.196.104:80 check
+    server 527036-web-02 100.25.102.27:80 check
 "
 echo "$server_config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
 echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
