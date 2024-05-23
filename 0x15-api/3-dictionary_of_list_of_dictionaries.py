@@ -8,6 +8,7 @@ returns information about his/her TODO list progress.
 import json
 import requests
 
+
 def fetch_data():
     users_url = 'https://jsonplaceholder.typicode.com/users'
     todos_url = 'https://jsonplaceholder.typicode.com/todos'
@@ -19,6 +20,7 @@ def fetch_data():
     todos = todos_response.json()
 
     return users, todos
+
 
 def create_data_structure(users, todos):
     data = {}
@@ -37,15 +39,17 @@ def create_data_structure(users, todos):
 
     return data
 
+
 def export_to_json(data, filename='todo_all_employees.json'):
     with open(filename, 'w') as json_file:
         json.dump(data, json_file)
+
 
 def main():
     users, todos = fetch_data()
     data = create_data_structure(users, todos)
     export_to_json(data)
 
+
 if __name__ == "__main__":
     main()
-
