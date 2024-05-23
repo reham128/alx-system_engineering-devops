@@ -4,10 +4,9 @@ Based on previouse task extend your Python
 script to export data in the CSV format.
 """
 
-
+import csv
 import requests
 import sys
-import csv
 
 
 def employee_progress(employee_id):
