@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+Based on previouse task extend your Python
+script to export data in the CSV format.
+"""
 
 
 import requests
