@@ -2,6 +2,6 @@
 
 
 exec { 'increase-nginx-worker-connections':
-    command => '/bin/sed -i "s/worker_connections 768;/worker_connections 4096;/" /etc/nginx/nginx.conf && service nginx restart',
-    path    => ['/bin', '/usr/bin'],
+    command => 'sed -i "s/15/10000/" /etc/default/nginx && sudo service nginx restart',
+    path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games',
 }
